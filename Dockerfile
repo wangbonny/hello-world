@@ -31,6 +31,8 @@ ENV HOME /home/appium
 
 RUN cd /opt/appium && npm install appium@1.4.16
 
+USER root
+
 RUN apt-get install -y python-pip
 RUN pip install --upgrade pip 
 RUN pip install robotframework==3.* 
@@ -40,6 +42,8 @@ RUN pip install robotframework-debuglibrary
 RUN pip install robotframework-databaselibrary 
 RUN pip install robotframework-mongodblibrary==0.3.4 
 RUN pip install robotframework-excellibrary==0.0.2 
+
+USER appium
 
 EXPOSE 4723
 CMD /opt/appium/node_modules/appium/bin/appium.js
